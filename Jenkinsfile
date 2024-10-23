@@ -11,7 +11,7 @@ pipeline {
             }
         }
         
-        stage('Build on Slave2') {
+        stage('Test on Slave2') {
             agent { label 'slave2' } // Specify the agent for this stage
             
             steps {
