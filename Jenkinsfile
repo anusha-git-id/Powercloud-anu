@@ -2,18 +2,22 @@ pipeline {
     agent none // Don't use a default agent
 
     stages {
-        stage('Build on Slave1') {
-            agent { label 'Slave1' } // Specify that this stage runs on Slave1
+        stage('Build on slave1') {
+            agent { label 'slave1' }
+            environment {
+                JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-amd64' // Specify the JAVA_HOME
+            }
             steps {
-                // Run Maven clean and package, skipping the tests
                 sh 'mvn clean package -Dmaven.test.skip=true'
             }
         }
         
-        stage('Build on Slave2') {
-            agent { label 'Slave2' } // Specify that this stage runs on Slave2
+        stage('Build on slave2') {
+            agent { label 'slave2' }
+            environment {
+                JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-amd64' // Specify the JAVA_HOME
+            }
             steps {
-                // Run Maven clean and package, skipping the tests
                 sh 'mvn clean package -Dmaven.test.skip=true'
             }
         }
@@ -22,7 +26,6 @@ pipeline {
     post {
         success {
             echo 'Archiving the artifacts'
-            // Archive artifacts after both builds
             archiveArtifacts artifacts: '**/target/*.war'
         }
     }
