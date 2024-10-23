@@ -9,7 +9,7 @@ pipeline {
             }
             steps {
                 // Run Maven clean and package, skipping the tests
-                sh 'mvn clean package -Dmaven.test.skip=true'
+                sh 'mvn clean  -Dmaven.test.skip=true'
             }
         }
         
