@@ -18,7 +18,7 @@ pipeline {
                 JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-amd64' // Specify the JAVA_HOME
             }
             steps {
-                sh 'mvn clean package -Dmaven.test.skip=true'
+                sh 'mvn clean -Dmaven.test.skip=true'
             }
         }
     }
