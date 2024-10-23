@@ -1,5 +1,5 @@
 pipeline {
-    agent none // Don't use a default agent
+    
 
     stages {
         stage('Build on slave1') {
