@@ -25,7 +25,7 @@ pipeline {
         success {
             echo 'Archiving the artifacts'
             // This needs to be inside a node context. Adding node block for archiving.
-            node {
+            node ('slave2') {
                 archiveArtifacts artifacts: '**/target/*.war'
             }
         }
