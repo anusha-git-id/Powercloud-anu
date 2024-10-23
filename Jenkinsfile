@@ -1,9 +1,7 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'local_maven' // Use the Maven tool configured in Jenkins
-    }
+    
 
     stages {
         stage('Build') {
